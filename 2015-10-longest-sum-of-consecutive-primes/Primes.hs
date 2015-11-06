@@ -1,4 +1,6 @@
 import Data.Numbers.Primes -- outsource the hard bit to someone else!
+import Data.Maybe
+import Data.List
 
 type Prime = Integer   
 type SequenceLength = Integer
@@ -12,8 +14,9 @@ go :: Integer -> [Prime] -> (SequenceLength,Prime) -> (SequenceLength,Prime)
 go primeBelow candidatesPrimes previousBestSoFar 
     | primesLeftToCheck > fst bestSoFar = go primeBelow (tail candidatesPrimes) bestSoFar       
     | otherwise = bestSoFar
-        where candidate = last $
-                          filter (isPrime.snd) $
+        where candidate = fromJust $
+                          find (isPrime.snd) $
+                          reverse $
                           takeWhile ((<primeBelow).snd) $
                           zip [0..] $ 
                           scanl (+) 0 candidatesPrimes
@@ -25,5 +28,4 @@ go primeBelow candidatesPrimes previousBestSoFar
 test = (longestPrimeSumOfConsecutivePrimes 100 == 41) &&
        (longestPrimeSumOfConsecutivePrimes 1000 == 953)
 
-answer = longestPrimeSumOfConsecutivePrimes 1000000
 
