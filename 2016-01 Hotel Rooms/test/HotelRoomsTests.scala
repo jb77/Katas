@@ -16,10 +16,10 @@ class HotelRoomsTests {
   @Test
   def holidayInn {
     val input = """#####
-#####
-####*
-#####
-#####"""
+                  |#####
+                  |####*
+                  |#####
+                  |#####""".stripMargin
     assertEquals("135", HotelRooms.number(input))
 
   }
@@ -27,43 +27,43 @@ class HotelRoomsTests {
   @Test
   def tricky {
     val input = """           #
-           *
-           #
-           #
-           #
-           #
-           #
-           #
-#########  #  #"""
+                  |           *
+                  |           #
+                  |           #
+                  |           #
+                  |           #
+                  |           #
+                  |           #
+                  |#########  #  #""".stripMargin
     assertEquals("281", HotelRooms.number(input))
   }
   
   @Test
   def others {
     val input = """         #####
-         #####           ######
-         #####           ######
-#  #  #  #####  #  #  #  ######  *"""
+                  |         #####           ######
+                  |         #####           ######
+                  |#  #  #  #####  #  #  #  ######  *""".stripMargin
     assertEquals("911", HotelRooms.number(input))
     
     val i2 = """#
-#  #
-#  #  ##
-#  #  ##  ###
-#  #  ##  ###  #####
-#  #  ##  ###  ##*##  ########
-#  #  ##  ###  #####  ########"""
+               |#  #
+               |#  #  ##
+               |#  #  ##  ###
+               |#  #  ##  ###  #####
+               |#  #  ##  ###  ##*##  ########
+               |#  #  ##  ###  #####  ########""".stripMargin
     assertEquals("523", HotelRooms.number(i2))
     
    val i3 = """                        ########*
-                        #########
-                        #########
-                        #########
-                        #########
-                        #########
-                        #########
-                        #########
-#  #  #  #  #  #  #  #  #########""" 
+              |                        #########
+              |                        #########
+              |                        #########
+              |                        #########
+              |                        #########
+              |                        #########
+              |                        #########
+              |#  #  #  #  #  #  #  #  #########""".stripMargin 
    assertEquals("999", HotelRooms.number(i3))
     
   }
